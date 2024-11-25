@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    enviroment{
+        USERNAME="cmd"
+    }
     stages{
         stage("build - Instalacion dependencias"){
             agent{
@@ -12,6 +15,11 @@ pipeline{
                 stage("build - Instalacion dependencias"){
                     steps{
                         sh 'npm install'
+                    }
+                } 
+                stage("build - Instalacion dependencias"){
+                    steps{
+                        sh 'npm run test'
                     }
                 } 
                 stage("build - build del proyecto"){
